@@ -83,6 +83,7 @@ make migrate-down
 ```bash
 # Установите зависимости
 go mod download
+```
 
 ```bash
 go run cmd/api/main.go
