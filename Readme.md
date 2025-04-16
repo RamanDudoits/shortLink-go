@@ -184,7 +184,7 @@ Authorization: Bearer <your_jwt_token>
 
 #### Обновление ссылки
 ```http
-PUTCH /api/links/{id}/update
+PATCH /api/links/{id}/update
 Authorization: Bearer <your_jwt_token>
 Content-Type: application/json
 
