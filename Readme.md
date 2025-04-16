@@ -21,7 +21,7 @@
 ### 1. Клонирование репозитория
 ```bash
 git clone https://github.com/RamanDudoits/shortLink-go
-cd shortlink
+cd shortLink-go
 ```
 
 ### 2. Настройка окружения
@@ -160,16 +160,77 @@ Content-Type: application/json
 GET /api/links
 Authorization: Bearer <your_jwt_token>
 ```
+Ответ:
+```json
+[
+    {
+        "id": 2,
+        "original_url": "https://example.com/very/long/url",
+        "short_code": "FWgqV",
+        "user_id": 1,
+        "click_count": 2,
+        "created_at": "2025-04-16T07:49:32.873295Z"
+    },
+    {
+        "id": 1,
+        "original_url": "https://google.com",
+        "short_code": "4Eli3",
+        "user_id": 1,
+        "click_count": 0,
+        "created_at": "2025-04-16T07:48:46.490322Z"
+    }
+]
+```
 
-#### Редирект
+#### Обновление ссылки
 ```http
-GET /abc123
+PUTCH /api/links/{id}/update
+Authorization: Bearer <your_jwt_token>
+Content-Type: application/json
+
+{
+  "link": "https://example.com/very/url"
+}
+```
+Ответ:
+```json
+{
+    "id": 2,
+    "original_url": "https://example.com/very/url",
+    "short_code": "FWgqV",
+    "user_id": 1,
+    "click_count": 2,
+    "created_at": "2025-04-16T07:49:32.873295Z"
+}
+```
+
+#### Полученние данных о ссылке
+```http
+GET /api/links/{id}
+Authorization: Bearer <your_jwt_token>
+```
+Ответ:
+```json
+{
+    "id": 2,
+    "original_url": "https://example.com/very/url",
+    "short_code": "FWgqV",
+    "user_id": 1,
+    "click_count": 2,
+    "created_at": "2025-04-16T07:49:32.873295Z"
+}
 ```
 
 #### Удаление ссылки
 ```http
 DELETE /api/links/1
 Authorization: Bearer <your_jwt_token>
+```
+
+
+#### Редирект
+```http
+GET /FWgqV
 ```
 
 ## Конфигурация

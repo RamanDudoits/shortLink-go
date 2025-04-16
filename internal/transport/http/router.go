@@ -35,8 +35,8 @@ func NewRouter(authHandler handler.AuthHandlerInterface, linkHandler handler.Lin
 		r.Get("/api/links", linkHandler.List)
 		r.Post("/api/links", linkHandler.Store)
 		r.Delete("/api/links/destroy", linkHandler.Destroy)
-		r.Get("/api/links/{shortLink}", linkHandler.Get)
-		r.Patch("/api/links/{shortLink}/update", linkHandler.Update)
+		r.Get("/api/links/{id}", linkHandler.Get)
+		r.Patch("/api/links/{id}/update", linkHandler.Update)
 	})
 	return r
 }
